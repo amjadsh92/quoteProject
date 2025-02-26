@@ -8,3 +8,26 @@
   margin-top:200px;
 
 }
+
+
+.bg-sunset-orange { background-color: rgb(243, 156, 18) !important; }
+.text-sunset-orange { color: rgb(243, 156, 18) !important; }
+
+.bg-deep-coffee { background-color: rgb(52, 34, 36) !important; }
+.text-deep-coffee { color: rgb(52, 34, 36) !important; }
+
+.bg-emerald-green { background-color: rgb(39, 174, 96) !important; }
+.text-emerald-green { color: rgb(39, 174, 96) !important; }
+
+.bg-royal-purple { background-color: rgb(155, 89, 182) !important; }
+.text-royal-purple { color: rgb(155, 89, 182) !important; }
+
+.bg-navy-storm { background-color: rgb(44, 62, 80) !important; }
+.text-navy-storm { color: rgb(44, 62, 80) !important; }
+
+.bg-mulberry-brown { background-color: rgb(71, 46, 50) !important; }
+.text-mulberry-brown { color: rgb(71, 46, 50) !important; }
+
+.bg-coral-red { background-color: rgb(251, 105, 100) !important; }
+.text-coral-red { color: rgb(251, 105, 100) !important; }
+
