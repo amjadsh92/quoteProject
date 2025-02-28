@@ -3,12 +3,42 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // Import Bootstrap JS (for components like modals)
 import './App.css'
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import fontawesome from '@fortawesome/fontawesome'
+import {faQuoteLeft} from '@fortawesome/free-solid-svg-icons'
+
 let allQuotes;
 
 function App() {
 
+const [background, setBackground] = useState({color: "bg-white"})
+
+ 
+return(
+  <div className = {`h-100 min-vh-100 w-100 p-1px ${background.color}`}>
+
+      <QuoteBox updateBackground= {setBackground} />
+ 
+  </div>
+
+)
+    
+
+
+}     
+     
+
+export default App
+
+
+
+
+
+
+function QuoteBox({updateBackground}){
+
+
   const [quoteBox, setQuote] = useState({backgroundColor:"bg-primary",quoteTextColor:"text-primary"  })
-  const [color, setColor] = useState({backgroundColor:"bg-primary", textColor:"text-primary"})
   const [loading, setLoading] = useState(true);
   
   const backgroundColors = [
@@ -46,7 +76,7 @@ function App() {
       quoteBox.backgroundColor = backgroundColors[indColor];
       quoteBox.quoteTextColor = textColors[indColor];
       setQuote({quote, author, backgroundColor:quoteBox.backgroundColor, quoteTextColor:quoteBox.quoteTextColor })
-      
+      updateBackground({color:quoteBox.backgroundColor})
       return allQuotes
       
       }
@@ -77,14 +107,14 @@ function App() {
     quoteBox.backgroundColor = backgroundColors[indColor];
     quoteBox.quoteTextColor = textColors[indColor];
     setQuote({quote, author, backgroundColor:quoteBox.backgroundColor, quoteTextColor:quoteBox.quoteTextColor });
-
+    updateBackground({color:quoteBox.backgroundColor})
   }  
 
 
     return (
         <div id="quote-box" className={`quote-box bg-white border border-dark w-500px mx-auto`}>
           
-          <p id="text" className={`text-center ${quoteBox.quoteTextColor}`}><span>""</span>{quoteBox.quote}</p>
+          <p id="text" className={`text-center fs-3  position-relative ${quoteBox.quoteTextColor}`}><FontAwesomeIcon icon={faQuoteLeft} className="me-2 fs-2" /> {quoteBox.quote}</p>
           <p id="author" className={`text-end ${quoteBox.quoteTextColor}`}>{quoteBox.author} </p>
           <div id="change-quote" className = "d-flex justify-content-between align-items-center mt-5 mb-3">
             <div className="d-flex gap-1">
@@ -103,10 +133,4 @@ function App() {
 
     )
 
-    
-
-
-}     
-     
-
-export default App
+}
