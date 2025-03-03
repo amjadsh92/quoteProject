@@ -38,11 +38,10 @@ export default App
 function QuoteBox({updateBackground}){
 
 
-  const [quoteBox, setQuote] = useState({backgroundColor:"bg-primary",quoteTextColor:"text-primary"  })
-  //const [isLoaded, setIsLoaded] = useState(false);
-  //const [isVisible, setIsVisible] = useState(false)
+  const [quoteBox, setQuote] = useState({quote:"", author:"", backgroundColor:"bg-primary",quoteTextColor:"text-primary"  })
   const [isFading, setIsFading] = useState(false)
-  const backgroundColors = [
+  const [isLoaded, setIsLoaded]= useState(false)
+  const backgrounColors = [
     "bg-sunset-orange",
     "bg-deep-coffee",
     "bg-emerald-green",
@@ -51,7 +50,7 @@ function QuoteBox({updateBackground}){
     "bg-mulberry-brown",
     "bg-coral-red"
   ];
-  
+
   const textColors = [
     "text-sunset-orange",
     "text-deep-coffee",
@@ -61,6 +60,8 @@ function QuoteBox({updateBackground}){
     "text-mulberry-brown",
     "text-coral-red"
   ];
+  
+  
 
   
   const fetchData = async () => {
@@ -70,22 +71,23 @@ function QuoteBox({updateBackground}){
       const response = await fetch("https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json")
       allQuotes = await response.json();
       allQuotes= allQuotes.quotes
-      let ind = Math.floor(Math.random() * 100);
-      let quote = allQuotes ? allQuotes[ind]?.quote : ""
-      let author = allQuotes ? allQuotes[ind]?.author : ""
+      let indQuote = Math.floor(Math.random() * 100);
+      let quote = allQuotes ? allQuotes[indQuote]?.quote : ""
+      let author = allQuotes ? allQuotes[indQuote]?.author : ""
       let indColor = Math.floor(Math.random() * 7);
-      quoteBox.backgroundColor = backgroundColors[indColor];
-      quoteBox.quoteTextColor = textColors[indColor];
-      setQuote({quote, author, backgroundColor:quoteBox.backgroundColor, quoteTextColor:quoteBox.quoteTextColor })
-      updateBackground({color:quoteBox.backgroundColor})
-      return allQuotes
+      let backgroundColor = backgrounColors[indColor];
+      let quoteTextColor = textColors[indColor];
+      let bodyColor = backgrounColors[indColor]
+      setQuote({quote, author, backgroundColor, quoteTextColor })
+      updateBackground({color: bodyColor})
+      
       
       }
     catch(error){
 
       console.error("Error fetching data:", error);
     }finally {
-      setIsLoaded(false);
+      setIsLoaded(true);
     }
   };
 
@@ -102,16 +104,17 @@ function QuoteBox({updateBackground}){
     setIsFading(true)
     
     setTimeout( () => {
-    let ind = Math.floor(Math.random() * 100);
-    let quote = allQuotes ? allQuotes[ind]?.quote : "undefined";
-    let author = allQuotes ? allQuotes[ind]?.author : "undefined";
+    let indQuote = Math.floor(Math.random() * 100);
+    let quote = allQuotes ? allQuotes[indQuote]?.quote : "undefined";
+    let author = allQuotes ? allQuotes[indQuote]?.author : "undefined";
     let indColor = Math.floor(Math.random() * 7);
-    quoteBox.backgroundColor = backgroundColors[indColor];
-    quoteBox.quoteTextColor = textColors[indColor];
-    setQuote({quote, author, backgroundColor:quoteBox.backgroundColor, quoteTextColor:quoteBox.quoteTextColor });
+    let backgroundColor = backgrounColors[indColor];
+    let quoteTextColor = textColors[indColor];
+    let bodyColor = backgrounColors[indColor]
+    setQuote({quote, author, backgroundColor, quoteTextColor });
     setIsFading(false)
     
-    updateBackground({color:quoteBox.backgroundColor})
+    updateBackground({color:bodyColor})
     }, 500
     )
   }  
