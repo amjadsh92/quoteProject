@@ -61,7 +61,15 @@
   padding:1px;
 }
 
+.btn-hover-light:hover {
+  filter: brightness(1.1); /* Makes color 20% lighter */
+}
 
+.body-color{
+  
+  background-color: #333
+
+}
 .bg-sunset-orange { background-color: rgb(243, 156, 18) !important; }
 .text-sunset-orange { color: rgb(243, 156, 18) !important; }
 

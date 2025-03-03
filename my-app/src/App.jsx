@@ -11,7 +11,7 @@ let allQuotes;
 
 function App() {
 
-const [background, setBackground] = useState({color: "bg-white"})
+const [background, setBackground] = useState({color: "body-color"})
 
  
 return(
@@ -36,11 +36,12 @@ export default App
 
 
 function QuoteBox({updateBackground}){
-
+  
 
   const [quoteBox, setQuote] = useState({quote:"", author:"", backgroundColor:"bg-primary",quoteTextColor:"text-primary"  })
   const [isFading, setIsFading] = useState(false)
   const [isLoaded, setIsLoaded]= useState(false)
+  
   const backgrounColors = [
     "bg-sunset-orange",
     "bg-deep-coffee",
@@ -121,22 +122,22 @@ function QuoteBox({updateBackground}){
 
 
     return (
-        <div id="quote-box" className={`quote-box bg-white border border-dark w-500px mx-auto border-0 rounded-1 `}>
+        isLoaded ? (<div id="quote-box" className={`quote-box bg-white border border-dark w-500px mx-auto border-0 rounded-1 `}>
           
-          <p id="text" className={`text-center fs-3  position-relative ${quoteBox.quoteTextColor} ${isFading ? "fade-out":"fade-in" }`}>{isLoaded ? <FontAwesomeIcon icon={faQuoteLeft} className="me-2 fs-2" /> : ""} {quoteBox.quote}</p>
+          <p id="text" className={`text-center fs-3  position-relative ${quoteBox.quoteTextColor} ${isFading ? "fade-out":"fade-in" }`}><FontAwesomeIcon icon={faQuoteLeft} className="me-2 fs-2" /> {quoteBox.quote}</p>
           <p id="author" className={`text-end ${quoteBox.quoteTextColor} ${isFading ? "fade-out":"fade-in" }`}><span className="me-1">-</span>{quoteBox.author} </p>
-         { isLoaded ? (<div id="change-quote" className = "d-flex justify-content-between align-items-center mt-5 mb-3">
+         <div id="change-quote" className = "d-flex justify-content-between align-items-center mt-5 mb-3">
             <div className="d-flex gap-1">
-            <button className={`btn btn-primary fade-button ${quoteBox.backgroundColor}  border-0 twitter`}><FontAwesomeIcon icon={faTwitter} /></button>
-            <button className={`btn btn-primary fade-button ${quoteBox.backgroundColor} border-0 tumblr`}><FontAwesomeIcon icon={faTumblr} /></button>
+            <button className={`btn btn-primary fade-button ${quoteBox.backgroundColor} btn-hover-light  border-0 twitter`}><FontAwesomeIcon icon={faTwitter} /></button>
+            <button className={`btn btn-primary fade-button ${quoteBox.backgroundColor} btn-hover-light border-0 tumblr`}><FontAwesomeIcon icon={faTumblr} /></button>
             </div>
                                     
-            <button className={`btn btn-primary fade-button ${quoteBox.backgroundColor} border-0`} onClick={changeQuote}>new quote</button>
+            <button className={`btn btn-primary fade-button ${quoteBox.backgroundColor} btn-hover-light border-0`} onClick={changeQuote}>new quote</button>
             
 
 
-          </div>) : ""}
-         </div>
+          </div>
+         </div>) : ""
 
 
 
