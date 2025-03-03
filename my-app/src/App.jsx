@@ -123,9 +123,9 @@ function QuoteBox({updateBackground}){
     return (
         <div id="quote-box" className={`quote-box bg-white border border-dark w-500px mx-auto border-0 rounded-1 `}>
           
-          <p id="text" className={`text-center fs-3  position-relative ${quoteBox.quoteTextColor} ${isFading ? "fade-out":"fade-in" }`}><FontAwesomeIcon icon={faQuoteLeft} className="me-2 fs-2" /> {quoteBox.quote}</p>
+          <p id="text" className={`text-center fs-3  position-relative ${quoteBox.quoteTextColor} ${isFading ? "fade-out":"fade-in" }`}>{isLoaded ? <FontAwesomeIcon icon={faQuoteLeft} className="me-2 fs-2" /> : ""} {quoteBox.quote}</p>
           <p id="author" className={`text-end ${quoteBox.quoteTextColor} ${isFading ? "fade-out":"fade-in" }`}><span className="me-1">-</span>{quoteBox.author} </p>
-          <div id="change-quote" className = "d-flex justify-content-between align-items-center mt-5 mb-3">
+         { isLoaded ? (<div id="change-quote" className = "d-flex justify-content-between align-items-center mt-5 mb-3">
             <div className="d-flex gap-1">
             <button className={`btn btn-primary fade-button ${quoteBox.backgroundColor}  border-0 twitter`}><FontAwesomeIcon icon={faTwitter} /></button>
             <button className={`btn btn-primary fade-button ${quoteBox.backgroundColor} border-0 tumblr`}><FontAwesomeIcon icon={faTumblr} /></button>
@@ -135,7 +135,7 @@ function QuoteBox({updateBackground}){
             
 
 
-          </div>
+          </div>) : ""}
          </div>
 
 
