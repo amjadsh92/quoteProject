@@ -62,7 +62,7 @@
 }
 
 .btn-hover-light:hover {
-  filter: brightness(1.1); /* Makes color 20% lighter */
+  filter: brightness(1.15); /* Makes color 20% lighter */
 }
 
 .body-color{
