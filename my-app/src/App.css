@@ -70,6 +70,10 @@
   background-color: #333
 
 }
+
+.text-color{
+  color:#333
+}
 .bg-sunset-orange { background-color: rgb(243, 156, 18) !important; }
 .text-sunset-orange { color: rgb(243, 156, 18) !important; }
 
