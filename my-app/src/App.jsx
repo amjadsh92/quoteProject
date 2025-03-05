@@ -99,7 +99,8 @@ function QuoteBox({updateBody, allQuotes, isLoaded}){
    setHideQuote(true) 
    updateQuoteBox()
    
-   setIsFading(true)
+   setTimeout(()=> {
+    setIsFading(true)
     
     setTimeout( () => {
       
@@ -108,6 +109,9 @@ function QuoteBox({updateBody, allQuotes, isLoaded}){
     
     }, 500
     )
+    
+   },1000 )
+   
   
   }, [allQuotes]); 
 
